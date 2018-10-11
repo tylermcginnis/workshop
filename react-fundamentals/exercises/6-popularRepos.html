@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popular Repos</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+</head>
+<body>
+  <div id='app'></div>
+  <script>
+    window.API = {
+      fetchPopularRepos(language) {
+        // "language" can be "javascript", "ruby", "python", or "all"
+        const encodedURI = encodeURI(`https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`)
+        return fetch(encodedURI)
+          .then((data) => data.json())
+          .then((repos) => repos.items)
+          .catch((error) => {
+            console.warn(error)
+            return null
+          });
+      }
+    }
+  </script>
+
+  <script type='text/babel'>
+    class Loading extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          text: 'Loading'
+        };
+      }
+      componentDidMount() {
+        const stopper = this.state.text + '...';
+        this.interval = window.setInterval(() => {
+          this.state.text === stopper
+            ? this.setState(() => ({ text: 'Loading' }))
+            : this.setState((prevState) => ({ text: prevState.text + '.' }))
+        }, 300)
+      }
+      componentWillUnmount() {
+        window.clearInterval(this.interval);
+      }
+      render() {
+        return (
+          <p>
+            {this.state.text}
+          </p>
+        )
+      }
+    }
+
+    class App extends React.Component {
+      render() {
+        return (
+          <div>
+
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>

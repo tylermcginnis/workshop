@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Fundamentals</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <div id='app'></div>
+  <script>
+    const name = 'Tyler'
+    const handle = '@tylermcginnis'
+
+    const nameElement = React.createElement(
+      'h1',
+      null,
+      name
+    )
+
+    const handleElement = React.createElement(
+      'h3',
+      null,
+      handle
+    )
+
+    const wrapperElement = React.createElement(
+      'div',
+      { id: 'container' },
+      nameElement,
+      handleElement
+    )
+
+    console.log('wrapperElement', wrapperElement)
+
+    ReactDOM.render(
+      wrapperElement,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
