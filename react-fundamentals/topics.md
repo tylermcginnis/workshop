@@ -6,7 +6,8 @@ props
 Component composition
 state
 Controlled vs Uncontrolled Components
+Ajax
+Lifecycle Methods
 Babel
 Webpack
-Lifecycle Events
-Ajax
+Create React App

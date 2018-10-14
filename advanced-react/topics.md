@@ -1,4 +1,3 @@
-Context
-Render Props
 Higher Order Components
-Compound Components
+Render Props
+Context

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First React App</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+</head>
+<body>
+  <div id='app'></div>
+
+  <script type='text/babel'>
+    function Chart ({ type, color, ...rest }) {
+      return (
+        <div {...rest} style={{height: 100, width: 100, background: color, margin: 50}}>
+          <h1>{type} Chart</h1>
+        </div>
+      )
+    }
+
+    function Tooltip ({ id }) {
+      return (
+        <div style={{width: 50, height: 50, background: 'red', position: 'absolute'}}>{id}</div>
+      )
+    }
+
+    class Info extends React.Component {
+      render() {
+        return (
+          <div>
+            <svg
+              style={{margin: 50}}
+              onMouseOver={this.mouseOver}
+              onMouseOut={this.mouseOut}
+              className="Icon-svg Icon--hoverable-svg"
+              height={this.props.height}
+              viewBox="0 0 16 16" width="16">
+                <path d="M9 8a1 1 0 0 0-1-1H5.5a1 1 0 1 0 0 2H7v4a1 1 0 0 0 2 0zM4 0h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm4 5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+            </svg>
+          </div>
+        )
+      }
+    }
+
+    class DailyChart extends React.Component {
+      render() {
+        return (
+          <div>
+            <Chart
+              type='daily'
+              color='green'
+            />
+          </div>
+        )
+      }
+    }
+
+    class TrendChart extends React.Component {
+      render() {
+        return (
+          <div>
+            <Chart
+              type='trend'
+              color='blue'
+            />
+          </div>
+        )
+      }
+    }
+
+    function App () {
+      return (
+        <div className="App">
+          <Info />
+          <DailyChart />
+          <TrendChart />
+        </div>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>

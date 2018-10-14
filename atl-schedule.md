@@ -8,16 +8,16 @@ Thursday
     Component composition
     state
     Controlled vs Uncontrolled Components
-    Lifecycle Events
+    Lifecycle Methods
     Ajax
   12:30 - Lunch
   1:30 -
     Babel
     Webpack
     Creat React App
-    Context
-    Render Props
     Higher Order Components
+    Render Props
+    Context
 
 Friday
   9:30 -
