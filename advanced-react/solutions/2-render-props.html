@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First React App</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+</head>
+<body>
+  <div id='app'></div>
+
+  <script type='text/babel'>
+    // Convert the withMouse HOC to a Mouse component with a render prop
+
+    class Mouse extends React.Component {
+      state = {
+        x: 0,
+        y: 0,
+      }
+      handleMouseMove = (e) => {
+        this.setState({
+          x: e.clientX,
+          y: e.clientY
+        })
+      }
+      render() {
+        return (
+          <div onMouseMove={this.handleMouseMove}>
+            {this.props.children(this.state)}
+          </div>
+        )
+      }
+    }
+
+    function App () {
+      return (
+        <Mouse>
+          {(mouse) => (
+            <div style={{height: 500, width: 500}}>
+              <b>The mouse position is ({mouse.x}, {mouse.y})</b>
+            </div>
+          )}
+        </Mouse>
+      )
+    }
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
