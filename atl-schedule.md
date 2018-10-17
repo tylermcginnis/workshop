@@ -25,8 +25,7 @@ Friday
     Redux
   12:30 - Lunch
   1:30 -
-    Scale Problems
-      Performance
-      Organization
+    Redux vs Context
+    Performance
     Gatsby
     CSS in JS
